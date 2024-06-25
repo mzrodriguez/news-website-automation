@@ -11,11 +11,11 @@ from datetime import datetime, timedelta
 from RPA.Browser.Selenium import Selenium
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from get_gecko_driver import GetGeckoDriver
+import geckodriver_autoinstaller
+#from get_gecko_driver import GetGeckoDriver
 from selenium.common.exceptions import ElementNotVisibleException,NoSuchElementException,StaleElementReferenceException,ElementNotInteractableException
 
-firefox_driver = GetGeckoDriver()
-firefox_driver.install()
+geckodriver_autoinstaller.install()
 
 class NewsWebsiteAutomation:
 
