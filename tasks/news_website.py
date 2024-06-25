@@ -35,7 +35,7 @@ class NewsWebsiteAutomation:
 
     def open_news_website(self) -> None:
         try:
-            self.driver.open_browser(self.url_path, browser='firefox', service_log_path=os.path.devnull)
+            self.driver.open_browser(self.url_path, service_log_path=os.path.devnull)
             self.driver.wait_until_element_is_visible(self.config['website']['page_header_visible_element'],120)
         except ElementNotVisibleException as e:
             self.logger.warning('reloading page, it was not possible to establish a connection')
