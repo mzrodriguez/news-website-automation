@@ -25,11 +25,11 @@ def config_file() -> dict:
 config = config_file()
 
 def main():
-    items = Items()
-    workitems = items.get_work_item_variables()
+    """items = Items()
+    workitems = items.get_work_item_variables()"""
     newswebsite = NewsWebsiteAutomation(
-            config, logging, workitems["url"], workitems["search_phrase"], 
-            workitems["category"])
+            config, logging, config["webpage_url"], config["search_phrase"], 
+            config["category"])
     newswebsite.open_news_website()
     newswebsite.search_news()
 
