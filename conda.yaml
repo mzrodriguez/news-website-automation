@@ -7,4 +7,5 @@ dependencies:
   - pip:
     - rpaframework==28.6.0
     - pandas==2.2.2
+    - selenium==4.22.0
     - geckodriver-autoinstaller==0.1.0
