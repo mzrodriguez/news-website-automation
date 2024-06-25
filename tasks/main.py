@@ -8,12 +8,13 @@ from yaml.loader import SafeLoader
 from datetime import datetime
 
 from news_website import NewsWebsiteAutomation
+from RPA.Robocloud.Items import Items
 
 logging.basicConfig(filename=f'./logs/{datetime.today().strftime("%m_%d_%Y")}.log', format='%(asctime)s - %(message)s', filemode='w')
 
 def config_file() -> dict:
     try:
-        with open('./configuration files/.config') as yaml_config:
+        with open('./configuration_file/.config') as yaml_config:
             return yaml.safe_load(yaml_config)
     except IOError:
         return {}
@@ -23,6 +24,14 @@ def config_file() -> dict:
 
 config = config_file()
 
-newswebsite = NewsWebsiteAutomation(config, logging, config['webpage_url'], config['search_phrase'], config['category'])
-newswebsite.open_news_website()
-newswebsite.search_news()
+def main():
+    items = Items()
+    items.load_work_item_from_environment()
+    newswebsite = NewsWebsiteAutomation(
+            config, logging, items.get_work_item_variable("url"), items.get_work_item_variable("search_phrase"), 
+            items.get_work_item_variable("category"))
+    newswebsite.open_news_website()
+    newswebsite.search_news()
+
+if __name__=="__main__":
+    main()
