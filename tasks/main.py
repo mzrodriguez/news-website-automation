@@ -26,7 +26,7 @@ config = config_file()
 
 def main():
     items = Items()
-    workitems = items.get_work_item_variable()
+    workitems = items.get_current_work_item()
     newswebsite = NewsWebsiteAutomation(
             config, logging, workitems["variables"].get("url"), workitems["variables"].get("search_phrase"), 
             workitems["variables"].get("category"))
