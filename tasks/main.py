@@ -28,8 +28,8 @@ def main():
     items = Items()
     workitems = items.get_work_item_variables()
     newswebsite = NewsWebsiteAutomation(
-            config, logging, workitems.get("url"), workitems.get("search_phrase"), 
-            workitems.get("category"))
+            config, logging, workitems["url"], workitems["search_phrase"], 
+            workitems["category"])
     newswebsite.open_news_website()
     newswebsite.search_news()
 
