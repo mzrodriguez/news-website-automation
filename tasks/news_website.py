@@ -6,15 +6,16 @@ import requests
 
 import pandas as pd
 
-import geckodriver_autoinstaller
 from typing import Match
 from datetime import datetime, timedelta
 from RPA.Browser.Selenium import Selenium
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from get_gecko_driver import GetGeckoDriver
 from selenium.common.exceptions import ElementNotVisibleException,NoSuchElementException,StaleElementReferenceException,ElementNotInteractableException
 
-geckodriver_autoinstaller.install()
+firefox_driver = GetGeckoDriver()
+firefox_driver.install()
 
 class NewsWebsiteAutomation:
 
@@ -35,7 +36,7 @@ class NewsWebsiteAutomation:
 
     def open_news_website(self) -> None:
         try:
-            self.driver.open_browser(self.url_path, service_log_path=os.path.devnull)
+            self.driver.open_browser(self.url_path, browser='firefox', service_log_path=os.path.devnull)
             self.driver.wait_until_element_is_visible(self.config['website']['page_header_visible_element'],120)
         except ElementNotVisibleException as e:
             self.logger.warning('reloading page, it was not possible to establish a connection')
