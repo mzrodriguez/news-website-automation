@@ -3,14 +3,16 @@ import sys
 import re
 import time
 import requests
+
 import pandas as pd
+
 from typing import Match
 from datetime import datetime, timedelta
 from RPA.Browser.Selenium import Selenium
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from get_gecko_driver import GetGeckoDriver
-from selenium.common.exceptions import ElementNotVisibleException, NoSuchElementException, StaleElementReferenceException, ElementNotInteractableException
+from selenium.common.exceptions import ElementNotVisibleException,NoSuchElementException,StaleElementReferenceException,ElementNotInteractableException
 
 firefox_driver = GetGeckoDriver()
 firefox_driver.install()
