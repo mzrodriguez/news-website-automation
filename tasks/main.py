@@ -26,9 +26,10 @@ config = config_file()
 
 def main():
     items = Items()
+    workitems = items.get_work_item_variable()
     newswebsite = NewsWebsiteAutomation(
-            config, logging, items.get_work_item_variable("url"), items.get_work_item_variable("search_phrase"), 
-            items.get_work_item_variable("category"))
+            config, logging, workitems["variables"].get("url"), workitems["variables"].get("search_phrase"), 
+            workitems["variables"].get("category"))
     newswebsite.open_news_website()
     newswebsite.search_news()
 
