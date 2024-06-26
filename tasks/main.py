@@ -8,7 +8,6 @@ from yaml.loader import SafeLoader
 from datetime import datetime
 
 from news_website import NewsWebsiteAutomation
-from RPA.Robocorp.Process import Process
 
 logging.basicConfig(filename=f'./logs/{datetime.today().strftime("%m_%d_%Y")}.log', format='%(asctime)s - %(message)s', filemode='w')
 
@@ -25,11 +24,9 @@ def config_file() -> dict:
 config = config_file()
 
 def main():
-    process = Process()
-    items = process.get_work_item()
     newswebsite = NewsWebsiteAutomation(
-            config, logging, items["url"], items["search_phrase"], 
-            items["category"])
+            config, logging, config["webpage_url"], config["search_phrase"], 
+            config["category"])
     newswebsite.open_news_website()
     newswebsite.search_news()
 
